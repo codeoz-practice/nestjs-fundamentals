@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { CustomProvidersController } from './custom-providers.controller';
-import { CustomProvidersService } from './custom-providers.service';
+import { MyUseValueModule } from './my-use-value.module';
+import { MyUseFactoryModule } from './my-use-factory.module';
 
 @Module({
-  imports: [],
-  controllers: [CustomProvidersController],
-  providers: [CustomProvidersService],
+  imports: [MyUseValueModule, MyUseFactoryModule],
+  controllers: [],
+  providers: [],
 })
 export class CustomProvidersModule {}

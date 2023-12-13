@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/custom-providers/src",
+  "compilerOptions": {
+    "deleteOutDir": true,
+    "webpack": true,
+    "tsConfigPath": "apps/custom-providers/tsconfig.app.json"
+  },
+  "monorepo": true,
+  "root": "apps/custom-providers",
+  "projects": {
+    "custom-providers": {
+      "type": "application",
+      "root": "apps/custom-providers",
+      "entryFile": "main",
+      "sourceRoot": "apps/custom-providers/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/custom-providers/tsconfig.app.json"
+      }
+    }
+  }
+}

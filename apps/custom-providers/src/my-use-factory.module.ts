@@ -42,5 +42,23 @@ export class OptionsProvider {
     OptionsProvider, // NOTE: useFactory에서 사용하기 위해 OptionsProvider를 주입
   ],
   controllers: [MyUseFactoryController],
+  exports: ['CONNECTION'],
 })
 export class MyUseFactoryModule {}
+
+// INFO: `exports` 다른 모듈에서 사용
+@Injectable()
+export class SomeOtherService {
+  constructor(
+    @Inject('CONNECTION')
+    private readonly connectionFactory: Record<string, any>,
+  ) {
+    const connection = this.connectionFactory;
+    console.log('SomeOtherService-connection:', connection); // 여기서 생성된 연결을 사용할 수 있습니다.
+  }
+}
+@Module({
+  imports: [MyUseFactoryModule], // MyUseFactoryModule import합니다.
+  providers: [SomeOtherService],
+})
+export class SomeOtherModule {} // 다른 모듈을 정의합니다.
